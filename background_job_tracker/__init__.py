@@ -7,5 +7,5 @@ RQ, and background task queues.
 
 from .client import Tracker
 
-__version__ = "0.1.2"
+__version__ = "0.1.4"
 __all__ = ["Tracker", "__version__"]

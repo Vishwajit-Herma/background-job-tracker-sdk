@@ -5,6 +5,18 @@ All notable changes to the `background-job-tracker` SDK will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-09-21
+
+### Fixed
+- Fixed LICENSE link in `README.md` to point to the direct GitHub repository file for PyPI rendering compatibility.
+- Migrated SDK to dedicated standalone repository: [Vishwajit-Herma/background-job-tracker-sdk](https://github.com/Vishwajit-Herma/background-job-tracker-sdk).
+- Updated project metadata URLs (Homepage, Repository, Documentation, and Bug Tracker).
+
+## [0.1.3] - 2026-09-21
+
+### Changed
+- Initial migration to standalone repository setup.
+
 ## [0.1.2] - 2026-09-10
 
 ### Changed

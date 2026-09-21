@@ -4,12 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "background-job-tracker"
-version = "0.1.2"
+version = "0.1.4"
 description = "Official Python SDK for Background Job Tracker — real-time monitoring, telemetry, and incident detection for background tasks."
 readme = "README.md"
 requires-python = ">=3.8"
-license = "MIT"
-license-files = ["LICENSE"]
+license = { text = "MIT" }
 authors = [
     { name = "Vishwajit Herma", email = "vishuherma@gmail.com" },
 ]
@@ -70,7 +69,7 @@ dev = [
 Homepage = "https://background-job-tracker-wine.vercel.app/"
 Repository = "https://github.com/Vishwajit-Herma/background-job-tracker-sdk"
 Documentation = "https://background-job-tracker.readthedocs.io/en/latest/getting-started/sdk-quickstart/"
-"Bug Tracker" = "https://github.com/Vishwajit-Herma/background-job-tracker-sdk/issues"
+Issues = "https://github.com/Vishwajit-Herma/background-job-tracker-sdk/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
