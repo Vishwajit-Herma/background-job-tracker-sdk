@@ -1,0 +1,91 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "background-job-tracker"
+version = "0.1.2"
+description = "Official Python SDK for Background Job Tracker — real-time monitoring, telemetry, and incident detection for background tasks."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Vishwajit Herma", email = "vishuherma@gmail.com" },
+]
+keywords = [
+    "background-jobs",
+    "celery",
+    "rq",
+    "redis-queue",
+    "monitoring",
+    "telemetry",
+    "observability",
+    "reliability",
+    "apm",
+    "incident-detection",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Framework :: Celery",
+    "Topic :: System :: Monitoring",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "requests>=2.28.0",
+]
+
+[project.optional-dependencies]
+celery = [
+    "celery>=5.0.0",
+]
+rq = [
+    "rq>=1.10.0",
+]
+all = [
+    "celery>=5.0.0",
+    "rq>=1.10.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.16.0",
+    "build>=1.0.0",
+    "twine>=5.0.0",
+]
+
+[project.urls]
+Homepage = "https://background-job-tracker-wine.vercel.app/"
+Repository = "https://github.com/Vishwajit-Herma/background-job-tracker-sdk"
+Documentation = "https://background-job-tracker.readthedocs.io/en/latest/getting-started/sdk-quickstart/"
+"Bug Tracker" = "https://github.com/Vishwajit-Herma/background-job-tracker-sdk/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["background_job_tracker*"]
+
+[tool.setuptools.package-data]
+background_job_tracker = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
