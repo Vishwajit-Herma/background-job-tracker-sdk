@@ -70,7 +70,9 @@ Export your project credentials (found in your Background Job Tracker dashboard)
 
 ```bash
 export BACKGROUND_JOB_TRACKER_API_KEY="bjt_live_xxxxxxxxxxxxxxxx"
-export BACKGROUND_JOB_TRACKER_BASE_URL="https://app.jobtracker.io"  # or http://localhost:8000 for self-hosted
+# Point to your BJT backend API ingestion URL (NOT the frontend dashboard URL)
+# For local dev: http://localhost:8000 | For self-hosted/production: https://your-bjt-api.example.com
+export BACKGROUND_JOB_TRACKER_BASE_URL="http://localhost:8000"
 ```
 
 #### Step 2: Initialize in `celery.py`
@@ -113,7 +115,7 @@ from background_job_tracker.integrations.rq import RQIntegration
 # 1. Initialize Tracker
 tracker = Tracker(
     api_key=os.environ["BACKGROUND_JOB_TRACKER_API_KEY"],
-    base_url=os.getenv("BACKGROUND_JOB_TRACKER_BASE_URL", "https://app.jobtracker.io"),
+    base_url=os.getenv("BACKGROUND_JOB_TRACKER_BASE_URL", "http://localhost:8000"),
 )
 
 # 2. Configure RQ Integration
@@ -187,7 +189,7 @@ The `Tracker` client can be configured programmatically or via environment varia
 | Setting | Environment Variable | Default | Description |
 |---|---|---|---|
 | **API Key** | `BACKGROUND_JOB_TRACKER_API_KEY` (or `BJT_SDK_API_KEY`) | *Required* | Project API key generated in the BJT Dashboard. |
-| **Base URL** | `BACKGROUND_JOB_TRACKER_BASE_URL` | `http://localhost:8000` | SaaS ingestion endpoint or self-hosted server URL. |
+| **Base URL** | `BACKGROUND_JOB_TRACKER_BASE_URL` | `http://localhost:8000` | Backend API ingestion URL (e.g. `http://localhost:8000` for local dev or `https://your-bjt-api.example.com` for production). Must point to the backend API, not the frontend. |
 | **Batch Size** | `batch_size` | `100` | Maximum number of events bundled into a single HTTP POST request. |
 | **Flush Interval** | `flush_interval` | `5.0` | Maximum seconds to wait before flushing an incomplete batch. |
 | **Max Queue Size** | `max_queue_size` | `10000` | In-memory queue limit. If reached, new events are safely dropped. |
@@ -198,7 +200,7 @@ The `Tracker` client can be configured programmatically or via environment varia
 ```python
 tracker = Tracker(
     api_key="bjt_live_xxxxxxxxxxxxxxxx",
-    base_url="https://app.jobtracker.io",
+    base_url="http://localhost:8000",  # or your production backend URL: https://your-bjt-api.example.com
     batch_size=50,  # Flush after 50 events
     flush_interval=2.0,  # Or flush every 2 seconds
     max_queue_size=20000,  # Buffer up to 20,000 events in memory
